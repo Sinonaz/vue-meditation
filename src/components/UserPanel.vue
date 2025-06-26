@@ -31,15 +31,20 @@ import IconRelax from '@/components/icons/IconRelax.vue'
 </template>
 
 <style scoped>
+.user {
+  width: 100%;
+  max-width: 370px;
+}
+
 .user__fillings {
-  margin-top: 40px;
+  margin-top: 35px;
   display: flex;
   gap: 22px;
 }
 
 img {
   display: block;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 h3 {
