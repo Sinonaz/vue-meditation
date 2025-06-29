@@ -11,11 +11,15 @@ import IconLogo from '@/components/icons/IconLogo.vue'
 </template>
 
 <style scoped>
+body {
+  background: url('@/assets/bg.png') no-repeat center / cover;
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px;
+  padding: 50px;
 }
 
 .logo {

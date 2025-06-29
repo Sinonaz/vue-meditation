@@ -16,5 +16,6 @@ button {
   border: none;
   border-radius: 10px;
   padding: 16px 55px;
+  cursor: pointer;
 }
 </style>
