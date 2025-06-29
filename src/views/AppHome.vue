@@ -16,6 +16,6 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 100px;
-  padding: 50px 60px 0;
+  padding: 50px 60px;
 }
 </style>
