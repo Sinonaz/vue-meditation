@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AppHeader from '@/layout/AppHeader.vue'
 import { useRoute } from 'vue-router'
 import DefaultLayout from '@/layout/DefaultLayout.vue'
 import AuthLayout from '@/layout/AuthLayout.vue'
