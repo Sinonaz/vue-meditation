@@ -4,6 +4,7 @@ import IconAnxious from '@/components/icons/IconAnxious.vue'
 import IconCalm from '@/components/icons/IconCalm.vue'
 import IconRelax from '@/components/icons/IconRelax.vue'
 import FillButton from '@/components/FillButton.vue'
+import { useStatsStore } from '@/stores/stats.store.ts'
 
 const feelingsState = [
   {
@@ -27,11 +28,22 @@ const feelingsState = [
     iconComponent: IconAnxious,
   },
 ]
+
+const statsStore = useStatsStore()
+
+function saveFeelings(type: string, value: number = 1) {
+  statsStore.saveFeelings(type, value)
+}
 </script>
 
 <template>
   <div class="feelings">
-    <FillButton v-for="{ alias, text, iconComponent } in feelingsState" :key="alias" :name="text">
+    <FillButton
+      v-for="{ alias, text, iconComponent } in feelingsState"
+      :key="alias"
+      :name="text"
+      @click="saveFeelings(alias)"
+    >
       <component :is="iconComponent" />
     </FillButton>
   </div>
