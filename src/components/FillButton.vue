@@ -24,6 +24,13 @@ const { name = '' } = defineProps<{ name: string }>()
   border: none;
   background: none;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    & .fill-btn__icon {
+      background: #69b09c;
+    }
+  }
 }
 
 .fill-btn__icon {

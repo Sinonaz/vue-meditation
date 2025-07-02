@@ -1,45 +1,39 @@
 <script setup lang="ts">
-import FillButton from '@/components/FillButton.vue'
-import IconCalm from '@/components/icons/IconCalm.vue'
-import IconAnxious from '@/components/icons/IconAnxious.vue'
-import IconFocus from '@/components/icons/IconFocus.vue'
-import IconRelax from '@/components/icons/IconRelax.vue'
+import { useProfileStore } from '@/stores/profile.store.ts'
+import { onMounted } from 'vue'
+import FeelingBlock from '@/components/FeelingBlock.vue'
+
+const profileStore = useProfileStore()
+
+onMounted(() => {
+  profileStore.fetchProfile()
+})
 </script>
 
 <template>
   <div class="user">
     <img src="@/assets/girl.png" width="129" height="129" alt="" />
 
-    <h3>Добро пожаловать, Наталья!</h3>
+    <h3>Добро пожаловать, {{ profileStore.profile?.username }}!</h3>
     <p>Как вы сегодня себя чувствуете?</p>
 
-    <div class="user__fillings">
-      <FillButton name="Спокойно">
-        <IconCalm />
-      </FillButton>
-      <FillButton name="Расслабленно">
-        <IconRelax />
-      </FillButton>
-      <FillButton name="Фокусировано">
-        <IconFocus />
-      </FillButton>
-      <FillButton name="Тревожно">
-        <IconAnxious />
-      </FillButton>
-    </div>
+    <FeelingBlock class="user__feelings" />
   </div>
 </template>
 
 <style scoped>
-.user__fillings {
-  margin-top: 40px;
-  display: flex;
-  gap: 22px;
+.user {
+  width: 100%;
+  max-width: 370px;
+}
+
+.user__feelings {
+  margin-top: 35px;
 }
 
 img {
   display: block;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 h3 {
