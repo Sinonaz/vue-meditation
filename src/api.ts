@@ -9,6 +9,7 @@ export const API_ROUTES = {
     register: 'auth/register',
   },
   profile: '/profile',
+  stats: '/stats',
 }
 
 export function http() {

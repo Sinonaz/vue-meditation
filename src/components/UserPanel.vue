@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import FillButton from '@/components/FillButton.vue'
-import IconCalm from '@/components/icons/IconCalm.vue'
-import IconAnxious from '@/components/icons/IconAnxious.vue'
-import IconFocus from '@/components/icons/IconFocus.vue'
-import IconRelax from '@/components/icons/IconRelax.vue'
 import { useProfileStore } from '@/stores/profile.store.ts'
 import { onMounted } from 'vue'
+import FeelingBlock from '@/components/FeelingBlock.vue'
 
 const profileStore = useProfileStore()
 
@@ -21,20 +17,7 @@ onMounted(() => {
     <h3>Добро пожаловать, {{ profileStore.profile?.username }}!</h3>
     <p>Как вы сегодня себя чувствуете?</p>
 
-    <div class="user__fillings">
-      <FillButton name="Спокойно">
-        <IconCalm />
-      </FillButton>
-      <FillButton name="Расслабленно">
-        <IconRelax />
-      </FillButton>
-      <FillButton name="Фокусировано">
-        <IconFocus />
-      </FillButton>
-      <FillButton name="Тревожно">
-        <IconAnxious />
-      </FillButton>
-    </div>
+    <FeelingBlock class="user__feelings" />
   </div>
 </template>
 
@@ -44,10 +27,8 @@ onMounted(() => {
   max-width: 370px;
 }
 
-.user__fillings {
+.user__feelings {
   margin-top: 35px;
-  display: flex;
-  gap: 22px;
 }
 
 img {
