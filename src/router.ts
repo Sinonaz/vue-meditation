@@ -7,6 +7,7 @@ export const router = createRouter({
     {
       path: '/',
       name: 'home',
+      meta: { requiresAuth: true },
       component: () => import('@/views/AppHome.vue'),
     },
     {
@@ -37,7 +38,7 @@ export const router = createRouter({
 router.beforeEach((to) => {
   const authStore = useAuthStore()
 
-  if (!authStore.getToken && to.meta.layout !== 'auth') {
+  if (!authStore.getToken && to.meta.requiresAuth) {
     return { name: 'auth' }
   }
 })
