@@ -6,7 +6,7 @@ export const API_ROUTES = {
   meditations: '/meditations',
   auth: {
     login: '/auth/login',
-    register: 'auth/register',
+    register: '/auth/register',
   },
   profile: '/profile',
   stats: '/stats',
