@@ -4,6 +4,16 @@ import NavLink from '@/components/NavLink.vue'
 import IconChart from '@/components/icons/IconChart.vue'
 import IconExit from '@/components/icons/IconExit.vue'
 import IconStart from '@/components/icons/IconStart.vue'
+import { useAuthStore } from '@/stores/auth.store.ts'
+import { useRouter } from 'vue-router'
+
+const authStore = useAuthStore()
+const router = useRouter()
+
+function exit() {
+  authStore.clearToken()
+  router.push({ name: 'auth' })
+}
 </script>
 
 <template>
@@ -28,7 +38,7 @@ import IconStart from '@/components/icons/IconStart.vue'
         </NavLink>
       </li>
       <li>
-        <NavLink to="">
+        <NavLink @click.prevent="exit" :to="{ name: 'auth' }">
           <template #icon>
             <IconExit />
           </template>

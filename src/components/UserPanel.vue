@@ -4,13 +4,21 @@ import IconCalm from '@/components/icons/IconCalm.vue'
 import IconAnxious from '@/components/icons/IconAnxious.vue'
 import IconFocus from '@/components/icons/IconFocus.vue'
 import IconRelax from '@/components/icons/IconRelax.vue'
+import { useProfileStore } from '@/stores/profile.store.ts'
+import { onMounted } from 'vue'
+
+const profileStore = useProfileStore()
+
+onMounted(() => {
+  profileStore.fetchProfile()
+})
 </script>
 
 <template>
   <div class="user">
     <img src="@/assets/girl.png" width="129" height="129" alt="" />
 
-    <h3>Добро пожаловать, Наталья!</h3>
+    <h3>Добро пожаловать, {{ profileStore.profile?.username }}!</h3>
     <p>Как вы сегодня себя чувствуете?</p>
 
     <div class="user__fillings">

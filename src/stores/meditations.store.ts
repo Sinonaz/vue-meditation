@@ -7,7 +7,7 @@ export const useMeditationsStore = defineStore('meditations', () => {
   const meditations = ref<MeditationInterface[]>([])
 
   async function fetchMeditations() {
-    const { data } = await http.get(API_ROUTES.meditations)
+    const { data } = await http().get(API_ROUTES.meditations)
 
     meditations.value = data.data.meditations
   }

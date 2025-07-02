@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue'
 import AppInput from '@/components/AppInput.vue'
-import { computed, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { useRouter } from 'vue-router'
 

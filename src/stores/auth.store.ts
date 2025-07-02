@@ -26,13 +26,39 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(username: string, password: string) {
-    const { data } = await http.post<{ data: AuthInterface; message: string; status: string }>(
-      API_ROUTES.auth.login,
-      { username, password },
-    )
+    try {
+      const {
+        data: { data, message, status },
+      } = await http().post<{ data: AuthInterface; message: string; status: string }>(API_ROUTES.auth.login, {
+        username,
+        password,
+      })
 
-    setToken(data.data.token)
+      if (status !== 'success') return
+
+      setToken(data.token)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  return { getToken, setToken, clearToken, login }
+  async function register(username: string, email: string, password: string) {
+    try {
+      const {
+        data: { data, message, status },
+      } = await http().post<{ data: AuthInterface; message: string; status: string }>(API_ROUTES.auth.register, {
+        username,
+        email,
+        password,
+      })
+
+      if (status !== 'success') return
+
+      setToken(data.token)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return { getToken, setToken, clearToken, login, register }
 })
